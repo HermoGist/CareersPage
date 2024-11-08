@@ -28,7 +28,11 @@
       if (iframe) {
         iframe.onload = function() {
           var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          var searchBox = iframeDoc.querySelector('.search-bar'); // Replace with correct class or ID
+          
+          // Try to find the search box based on a specific class or ID
+          var searchBox = iframeDoc.querySelector('.search-bar'); // Replace with the correct class if needed
+          
+          // Only hide the search box
           if (searchBox) {
             searchBox.style.display = 'none'; // Hide the search box
           }
