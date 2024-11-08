@@ -5,14 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Careers Page</title>
 
-  <!-- Custom CSS to hide the search box -->
+  <!-- Custom CSS to make sure iframe renders correctly -->
   <style>
-    /* Custom CSS to hide the search box inside the Greenhouse embedded iframe */
     #grnhse_app iframe {
-      display: block !important;
-    }
-    #grnhse_app iframe .search-bar {
-      display: none !important; /* Hide the search box */
+      width: 100%; /* Ensure iframe is full width */
+      height: 100%; /* Ensure iframe height */
     }
   </style>
 </head>
@@ -23,6 +20,22 @@
 
   <!-- Greenhouse Embedded Job Board Script -->
   <script src="https://boards.greenhouse.io/embed/job_board/js?for=failte"></script>
+
+  <!-- JavaScript to Hide Search Box Inside Iframe -->
+  <script>
+    window.addEventListener("load", function() {
+      var iframe = document.querySelector("#grnhse_app iframe");
+      if (iframe) {
+        iframe.onload = function() {
+          var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          var searchBox = iframeDoc.querySelector('.search-bar'); // Replace with correct class or ID
+          if (searchBox) {
+            searchBox.style.display = 'none'; // Hide the search box
+          }
+        };
+      }
+    });
+  </script>
 
 </body>
 </html>
